@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>alien_pink.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -97,6 +97,7 @@
     <None Include="Resources\tank.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="alien_pink.ico" />
     <Content Include="icon.ico" />
     <None Include="Properties\cherry.png" />
     <None Include="Properties\fireball_v2.png" />
