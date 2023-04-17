@@ -861,7 +861,6 @@ shoot lasers with the spacebar [space]
 
 rules
 1 hit: aliens ＆red lasers
-2 hits: fireball
 3hits: super alien</value>
   </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

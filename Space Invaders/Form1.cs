@@ -31,14 +31,14 @@ namespace Space_Invaders
         const int x = 360, y = 650;
         const int limit = 730;
 
-        int speed = -1;
-        int left = -1;
+        int speed = -3;//initial value was -1
+        int left = -3;//initial value was -1
         int top = 0;
         int cnt = 0;
         int pts = 0;
         //added by sarah
         int move = 0;//moves super alien
-        int cherryCount = 0;//counts how many times player hits cherry bomb (cap 2)
+        int cherryCount = 0;//counts how many times player hits cherry bomb (cap 2) -- future mod
         int saCount = 0;//counts how many times player hits super alien (cap 3)
 
         bool game = true;
@@ -87,11 +87,11 @@ namespace Space_Invaders
         {
             if (moveLeft && Player.Location.X >= 0)
             {
-                Player.Left--;
+                Player.Left -= 3;
             }
             else if (moveRight && Player.Location.X <= limit)
             {
-                Player.Left++;
+                Player.Left += 3;
             }
         }
 
@@ -211,6 +211,9 @@ namespace Space_Invaders
         //prints to screen if player wins
         private void YouWon()
         {
+            //disabling player
+            Player.Enabled = false;
+
             game = false;
 
             menu.Visible = true;
@@ -458,6 +461,7 @@ namespace Space_Invaders
             bomb.BackgroundImage = Properties.Resources.fireball;
             bomb.BackgroundImageLayout = ImageLayout.Stretch;
             bomb.Name = "CherryBomb";
+            bomb.BringToFront();
             this.Controls.Add(bomb);
         }
 
@@ -525,8 +529,9 @@ namespace Space_Invaders
                     {
                         this.Controls.Remove(cherry);
                     }
-
+                 
                     //checks-counts if cherrybomb hits player laser and removes both if true
+                    /* -- for future modifications
                     foreach (Control ct in this.Controls)
                     {
                         if (ct is PictureBox && ct.Name == "bullet")
@@ -542,8 +547,10 @@ namespace Space_Invaders
                                 this.Controls.Remove(bullet);
                                 pts += 3;
                                 Score(pts);
+                                cherryCount = 0;//reset cherrybomb counter
                             }
                         }
+                    */
 
                         //checks if cherrybomb hits player
                         //if so call 'loselife' function

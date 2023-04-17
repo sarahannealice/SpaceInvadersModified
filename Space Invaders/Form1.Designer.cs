@@ -83,7 +83,7 @@
             // timer4
             // 
             this.timer4.Enabled = true;
-            this.timer4.Interval = 1500;
+            this.timer4.Interval = 2000;
             this.timer4.Tick += new System.EventHandler(this.StrikeSpan);
             // 
             // timer5
@@ -171,7 +171,7 @@
             this.quit.ForeColor = System.Drawing.Color.White;
             this.quit.Location = new System.Drawing.Point(144, 214);
             this.quit.Name = "quit";
-            this.quit.Size = new System.Drawing.Size(61, 31);
+            this.quit.Size = new System.Drawing.Size(60, 30);
             this.quit.TabIndex = 3;
             this.quit.Text = "Quit";
             this.quit.Click += new System.EventHandler(this.quit_Click_1);
@@ -184,7 +184,7 @@
             this.startover.ForeColor = System.Drawing.Color.White;
             this.startover.Location = new System.Drawing.Point(112, 183);
             this.startover.Name = "startover";
-            this.startover.Size = new System.Drawing.Size(128, 31);
+            this.startover.Size = new System.Drawing.Size(127, 30);
             this.startover.TabIndex = 3;
             this.startover.Text = "Start Over";
             this.startover.Click += new System.EventHandler(this.startover_Click);
@@ -197,7 +197,7 @@
             this.endscore.ForeColor = System.Drawing.Color.White;
             this.endscore.Location = new System.Drawing.Point(112, 85);
             this.endscore.Name = "endscore";
-            this.endscore.Size = new System.Drawing.Size(88, 31);
+            this.endscore.Size = new System.Drawing.Size(87, 30);
             this.endscore.TabIndex = 2;
             this.endscore.Text = "score: ";
             // 
@@ -209,7 +209,7 @@
             this.finish.ForeColor = System.Drawing.Color.White;
             this.finish.Location = new System.Drawing.Point(42, 26);
             this.finish.Name = "finish";
-            this.finish.Size = new System.Drawing.Size(272, 59);
+            this.finish.Size = new System.Drawing.Size(272, 58);
             this.finish.TabIndex = 0;
             this.finish.Text = "Game Over!";
             // 
@@ -234,7 +234,7 @@
             // timer9
             // 
             this.timer9.Enabled = true;
-            this.timer9.Interval = 2000;
+            this.timer9.Interval = 3000;
             this.timer9.Tick += new System.EventHandler(this.FireCherry);
             // 
             // helpmenu
@@ -256,7 +256,7 @@
             this.controls.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.controls.Location = new System.Drawing.Point(19, 95);
             this.controls.Name = "controls";
-            this.controls.Size = new System.Drawing.Size(400, 216);
+            this.controls.Size = new System.Drawing.Size(400, 198);
             this.controls.TabIndex = 0;
             this.controls.Text = resources.GetString("controls.Text");
             // 
