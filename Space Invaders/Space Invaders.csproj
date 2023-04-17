@@ -104,6 +104,7 @@
     <Content Include="Resources\alien_red.png" />
     <Content Include="Resources\alien_white.png" />
     <Content Include="Resources\cherry.png" />
+    <Content Include="Resources\fireball.png" />
     <Content Include="Resources\player_laser.png" />
     <Content Include="Resources\player_ship_v1.png" />
     <Content Include="Resources\player_ship_v2.png" />

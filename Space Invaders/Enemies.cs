@@ -35,10 +35,10 @@ namespace Space_Invaders
             pb.BackgroundImage = Properties.Resources.alien_pink;
             pb.BackgroundImageLayout = ImageLayout.Stretch;
             pb.Name = "Alien";
-            p.Controls.Add(pb); 
+            p.Controls.Add(pb);
         }
 
-        //generates aliens on-screen
+        //generates aliens on-screen controls
         public void CreateSprites(Form p)
         {
             for(int i = 0; i < rows; i++)

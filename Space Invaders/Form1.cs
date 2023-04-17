@@ -422,8 +422,8 @@ namespace Space_Invaders
         {
             PictureBox bomb = new PictureBox();
             bomb.Location = new Point(a.Location.X + a.Width / 3, a.Location.Y + 20);
-            bomb.Size = new Size(5, 20);
-            bomb.BackgroundImage = Properties.Resources.cherry;
+            bomb.Size = new Size(20, 20);
+            bomb.BackgroundImage = Properties.Resources.fireball;
             bomb.BackgroundImageLayout = ImageLayout.Stretch;
             bomb.Name = "CherryBomb";
             this.Controls.Add(bomb);
