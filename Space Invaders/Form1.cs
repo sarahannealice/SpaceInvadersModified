@@ -217,7 +217,9 @@ namespace Space_Invaders
         //if all timers stop prints to screen 'game over' menu
         private void gameOver()
         {
-            timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop();
+            timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop(); 
+            //added by sarah
+            timer6.Stop(); timer7.Stop(); timer8.Stop(); 
 
             menu.Visible = true;
             endscore.Text += pts.ToString();
@@ -269,7 +271,7 @@ namespace Space_Invaders
             }
         }
 
-        //**********need to return to comment what this does************//
+
         private void Observe(object sender, EventArgs e)
         {
             Observer.Stop();
@@ -352,24 +354,30 @@ namespace Space_Invaders
                     if (laser.Bounds.IntersectsWith(Player.Bounds))
                     {
                         this.Controls.Remove(laser);
-                        LoseLife();
+                        LoseLife("laser");
                     }
                 }
             }
         }
 
         //reduces number of lives when player is hit by alien-alien laser
-        private void LoseLife()
+        private void LoseLife(string shot)
         {
             Player.Location = new Point(x, y);
 
             foreach (Control c in this.Controls)
             {
-                if (c is PictureBox && c.Name.Contains("Life") && c.Visible == true)
+                if (shot == "laser")
                 {
-                    PictureBox player = (PictureBox)c;
-                    player.Visible = false;
-                    return;
+                    if (c is PictureBox && c.Name.Contains("Life") && c.Visible == true)
+                    {
+                        PictureBox player = (PictureBox)c;
+                        player.Visible = false;
+                        return;
+                    }
+                } else if (shot == "cherry")
+                {
+                    gameOver();
                 }
             }
             gameOver();
@@ -489,7 +497,7 @@ namespace Space_Invaders
                     cherry.Top += 7;
 
                     //reached ground without being destroyed
-                    if (cherry.Location.Y >= 500)
+                    if (cherry.Location.Y >= 700)
                     {
                         this.Controls.Remove(cherry);
                     }
@@ -524,7 +532,7 @@ namespace Space_Invaders
                                 if (cherry.Bounds.IntersectsWith(player.Bounds))
                                 {
                                     this.Controls.Remove(cherry);
-                                    LoseLife();
+                                    LoseLife("cherry");
                                 }
                             }
                         }
