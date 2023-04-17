@@ -90,31 +90,6 @@
             // 
             this.Observer.Interval = 1;
             this.Observer.Tick += new System.EventHandler(this.Observe);
-            //
-            //--------------------timers added by sarah--------------------// 
-            // timer6
-            // 
-            this.timer6.Enabled = true;
-            this.timer6.Interval = 5000;
-            this.timer6.Tick += new System.EventHandler(this.InsertSuperAliens);
-            // 
-            // timer7
-            // 
-            this.timer7.Enabled = true;
-            this.timer7.Interval = 10;
-            this.timer7.Tick += new System.EventHandler(this.SuperAlienMove);
-            // 
-            // timer8
-            // 
-            this.timer8.Enabled = true;
-            this.timer8.Interval = 10;
-            this.timer8.Tick += new System.EventHandler(this.CheckCherry);
-            // 
-            // timer9
-            // 
-            this.timer9.Enabled = true;
-            this.timer9.Interval = 3000;
-            this.timer9.Tick += new System.EventHandler(this.FireCherry);
             // 
             // labelLives
             // 
@@ -231,6 +206,30 @@
             this.finish.Size = new System.Drawing.Size(272, 59);
             this.finish.TabIndex = 0;
             this.finish.Text = "Game Over!";
+            // 
+            // timer6
+            // 
+            this.timer6.Enabled = true;
+            this.timer6.Interval = 5000;
+            this.timer6.Tick += new System.EventHandler(this.InsertSuperAliens);
+            // 
+            // timer7
+            // 
+            this.timer7.Enabled = true;
+            this.timer7.Interval = 10;
+            this.timer7.Tick += new System.EventHandler(this.SuperAlienMove);
+            // 
+            // timer8
+            // 
+            this.timer8.Enabled = true;
+            this.timer8.Interval = 10;
+            this.timer8.Tick += new System.EventHandler(this.CheckCherry);
+            // 
+            // timer9
+            // 
+            this.timer9.Enabled = true;
+            this.timer9.Interval = 3000;
+            this.timer9.Tick += new System.EventHandler(this.FireCherry);
             // 
             // Form1
             // 

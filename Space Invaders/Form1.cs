@@ -34,7 +34,8 @@ namespace Space_Invaders
         int pts = 0;
         //added by sarah
         int move = 0;//moves super alien
-        int cherryCount = 0;//counts how many times player hits cherry bomb (cap 3)
+        int cherryCount = 0;//counts how many times player hits cherry bomb (cap 2)
+        int saCount = 0;//counts how many times player hits super alien (cap 3)
 
         bool game = true;
         bool moveLeft;
@@ -150,6 +151,27 @@ namespace Space_Invaders
                                 pts += 5;
                                 Score(pts);
                                 CheckForWinner();
+                            }
+                        }
+                    }
+
+                    foreach(Control control in this.Controls)
+                    {
+                        if (control is PictureBox && control.Name == "SuperAlien")
+                        {
+                            PictureBox sa = (PictureBox)control;
+                            if (bullet.Bounds.IntersectsWith(sa.Bounds) && saCount <3)
+                            {
+                                saCount++;
+                                this.Controls.Remove(bullet);
+                            } else if (bullet.Bounds.IntersectsWith(sa.Bounds) && saCount >= 3)
+                            {
+                                this.Controls.Remove(bullet);
+                                this.Controls.Remove(sa);
+                                superAlien.Remove(sa);
+                                pts += 10;
+                                Score(pts);
+                                saCount = 0;//reset counter
                             }
                         }
                     }
@@ -479,10 +501,10 @@ namespace Space_Invaders
                         {
                             PictureBox bullet = (PictureBox)ct;
 
-                            if (cherry.Bounds.IntersectsWith(bullet.Bounds) && cherryCount < 3)
+                            if (cherry.Bounds.IntersectsWith(bullet.Bounds) && cherryCount < 2)
                             {
                                 cherryCount++;
-                            } else if (cherry.Bounds.IntersectsWith(bullet.Bounds) && cherryCount >= 3)
+                            } else if (cherry.Bounds.IntersectsWith(bullet.Bounds) && cherryCount >= 2)
                             {
                                 this.Controls.Remove(cherry);
                                 this.Controls.Remove(bullet);
