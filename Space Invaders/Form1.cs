@@ -207,11 +207,6 @@ namespace Space_Invaders
                     Label lbl = (Label)c;
                     lbl.Text = "Game Over!";
                     game = false;
-
-                    Button btn = (Button)c;
-                    btn.Text = "Start Over";
-                    game = true;
-                    Application.Restart();
                 }
                 else
                 {
@@ -224,7 +219,7 @@ namespace Space_Invaders
         //score is based on aliens and alien-lasers eliminated
         private void Score(int pts)
         {
-            label2.Text = "Score: " + pts.ToString();
+            labelScore.Text = "Score: " + pts.ToString();
         }
 
         //method to add alien to screen
@@ -353,6 +348,11 @@ namespace Space_Invaders
                     }                    
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
 
         //reduces number of lives when player is hit by alien-alien laser
