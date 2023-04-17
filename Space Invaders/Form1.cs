@@ -18,10 +18,10 @@ namespace Space_Invaders
             menu.Hide();
             new Enemies().CreateSprites(this);
             InsertAliens();
-            InsertSuperAliens();//added by sarah
         }    
         List<PictureBox> aliens = new List<PictureBox>();
-        List<PictureBox> delay = new List<PictureBox>();
+        List<PictureBox> superAlien = new List<PictureBox>();
+        List<PictureBox> delay = new List<PictureBox>();        
 
         const int x = 360, y = 650;
         const int limit = 730;
@@ -31,6 +31,8 @@ namespace Space_Invaders
         int top = 0;        
         int cnt = 0;
         int pts = 0;
+        //added by sarah
+        int move = 0;
 
         bool game = true;
         bool moveLeft;
@@ -122,6 +124,7 @@ namespace Space_Invaders
                     }
 
                     //checks if player laser hits alien
+                    //if so checks if game has been won
                     foreach (Control ctrl in this.Controls)
                     {
                         if (ctrl is PictureBox && ctrl.Name == "Alien")
@@ -180,21 +183,11 @@ namespace Space_Invaders
         //prints to screen if player wins
         private void YouWon()
         {
-            game = false; 
+            game = false;
 
-            foreach(Control c in this.Controls)
-            {
-                if (c is Label && c.Name == "Finish")
-                {
-                    Label lbl = (Label)c;
-                    lbl.Text = "You Won!" + "\n"
-                             + "Score: " + pts.ToString(); 
-                }
-                else
-                {
-                    c.Visible = false; 
-                }
-            }
+            menu.Visible = true;
+            finish.Text = "  You Won!";
+            endscore.Text += pts.ToString();
         }
 
         //if all timers stop prints to screen 'game over' menu
@@ -224,12 +217,6 @@ namespace Space_Invaders
                     aliens.Add(alien); 
                 }
             }
-        }
-
-        //method to add super alien (sarah's code)
-        private void InsertSuperAliens()
-        {
-
         }
 
         //checks if object touches screen boundaries (left-right)
@@ -297,7 +284,7 @@ namespace Space_Invaders
             AlienMove();
         }
 
-        //prints to screen alien laser
+        //creates alien laser and its attributes
         private void Beam(PictureBox a)
         {
             PictureBox laser = new PictureBox();
@@ -366,19 +353,84 @@ namespace Space_Invaders
 
 
 
+        //--------------------super alien code--------------------//
+        //the following sections are added code by sarah
+        //create advance alien attributes
+        private void SuperAlien()
+        {
+            //creating array to hold 2 start locations for super alien
+            //to then randomize where it will start
+            Random r = new Random();
+            int[] location = new int[] { -70, 800 };
+            int x = location[r.Next(location.Length)];
+
+            PictureBox pb = new PictureBox();
+            pb.Location = new Point(x, 0);
+            pb.Size = new Size(60, 60);
+            pb.BackgroundImage = Properties.Resources.alien_white;
+            pb.BackgroundImageLayout = ImageLayout.Stretch;
+            pb.Name = "SuperAlien";
+            this.Controls.Add(pb);
+        }
+
+        //method to add super alien (sarah's code)
+        private void InsertSuperAliens(object sender, EventArgs e)
+        {
+            SuperAlien();
+        }
+
+        //moves super alien
+        private void SuperAlienMove(object sender, EventArgs e)
+        {
+
+            foreach (Control c in this.Controls)
+            {
+                if (c is PictureBox && c.Name == "SuperAlien")
+                {
+                    PictureBox sa = (PictureBox)c;
+
+                    if (sa.Location.X == -70)
+                    {
+                        move = 5;
+                        sa.Location = new Point(sa.Location.X + move, sa.Location.Y);
+                    } if (sa.Location.X == 800)
+                    {
+                        move = -5;
+                        sa.Location = new Point(sa.Location.X + move, sa.Location.Y);
+
+                    } else
+                    {
+                        sa.Location = new Point(sa.Location.X + move, sa.Location.Y);
+                    }
+
+                    /*
+                    if (sa.Location.X >= 800)
+                    {
+                        this.Controls.Remove(sa);
+                    }
+                    */
+
+                }
+            }
+        }
+
+        private void timer8_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+
+
         //--------------------menu event--------------------//
-        //this section is added code by sarah
         //resource for groupbox menu to restart-quit game
         //https://www.youtube.com/watch?v=V7tEaDgODZI&ab_channel=RohitProgrammingZone
-        
+
         //restarts application onclick
         private void startover_Click(object sender, EventArgs e)
         {
-            //timer1.Start();
-            //menu.Hide();
-            //Player.Location = new Point(x, y);
             Application.Restart();
         }
+
 
         //quits the application onclick
         private void quit_Click(object sender, EventArgs e)

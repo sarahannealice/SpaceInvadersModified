@@ -52,26 +52,5 @@ namespace Space_Invaders
                 x = 150; 
             }
         }
-
-
-        //--------------------super alien code--------------------//
-        //added by sarah
-        //create advance alien attributes
-        private void CreateSuperAlienControl(Form p)
-        {
-            PictureBox pb = new PictureBox();
-            pb.Location = new Point(x, y);
-            pb.Size = new Size(width, height);
-            pb.BackgroundImage = Properties.Resources.alien_white;
-            pb.BackgroundImageLayout = ImageLayout.Stretch;
-            pb.Name = "SuperAlien";
-            p.Controls.Add(pb);
-        }
-
-        //generates super alien on-screen
-        public void CreateSuperSprite(Form p)
-        {
-            CreateSuperAlienControl(p);
-        }
     }
 }

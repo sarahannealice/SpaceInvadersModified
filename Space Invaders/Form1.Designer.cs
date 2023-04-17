@@ -46,6 +46,9 @@
             this.startover = new System.Windows.Forms.Label();
             this.endscore = new System.Windows.Forms.Label();
             this.finish = new System.Windows.Forms.Label();
+            this.timer6 = new System.Windows.Forms.Timer(this.components);
+            this.timer7 = new System.Windows.Forms.Timer(this.components);
+            this.timer8 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
@@ -203,6 +206,24 @@
             this.finish.TabIndex = 0;
             this.finish.Text = "Game Over!";
             // 
+            // timer6
+            // 
+            this.timer6.Enabled = true;
+            this.timer6.Interval = 5000;
+            this.timer6.Tick += new System.EventHandler(this.InsertSuperAliens);
+            // 
+            // timer7
+            // 
+            this.timer7.Enabled = true;
+            this.timer7.Interval = 10;
+            this.timer7.Tick += new System.EventHandler(this.SuperAlienMove);
+            // 
+            // timer8
+            // 
+            this.timer8.Enabled = true;
+            this.timer8.Interval = 7000;
+            this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +251,11 @@
 
         }
 
+        private void Timer6_Tick(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
 
         private System.Windows.Forms.PictureBox Player;
@@ -249,6 +275,9 @@
         private System.Windows.Forms.Label endscore;
         private System.Windows.Forms.Label quit;
         private System.Windows.Forms.Label startover;
+        private System.Windows.Forms.Timer timer6;
+        private System.Windows.Forms.Timer timer7;
+        private System.Windows.Forms.Timer timer8;
     }
 }
 
