@@ -149,7 +149,7 @@
             this.Player.TabIndex = 0;
             this.Player.TabStop = false;
             // 
-            // menu
+            // menu -- added by sarah
             // 
             this.menu.Controls.Add(this.quit);
             this.menu.Controls.Add(this.startover);
@@ -163,7 +163,7 @@
             this.menu.TabStop = false;
             this.menu.Text = "menu";
             // 
-            // quit
+            // quit -- added by sarah
             // 
             this.quit.AutoSize = true;
             this.quit.BackColor = System.Drawing.Color.Transparent;
@@ -176,7 +176,7 @@
             this.quit.Text = "Quit";
             this.quit.Click += new System.EventHandler(this.quit_Click_1);
             // 
-            // startover
+            // startover -- added by sarah
             // 
             this.startover.AutoSize = true;
             this.startover.BackColor = System.Drawing.Color.Transparent;
@@ -189,7 +189,7 @@
             this.startover.Text = "Start Over";
             this.startover.Click += new System.EventHandler(this.startover_Click);
             // 
-            // endscore
+            // endscore -- added by sarah
             // 
             this.endscore.AutoSize = true;
             this.endscore.BackColor = System.Drawing.Color.Transparent;
@@ -201,7 +201,7 @@
             this.endscore.TabIndex = 2;
             this.endscore.Text = "score: ";
             // 
-            // finish
+            // finish -- added by sarah
             // 
             this.finish.AutoSize = true;
             this.finish.BackColor = System.Drawing.Color.Transparent;
@@ -213,31 +213,31 @@
             this.finish.TabIndex = 0;
             this.finish.Text = "Game Over!";
             // 
-            // timer6
+            // timer6 -- added by sarah
             // 
             this.timer6.Enabled = true;
             this.timer6.Interval = 5000;
             this.timer6.Tick += new System.EventHandler(this.InsertSuperAliens);
             // 
-            // timer7
+            // timer7 -- added by sarah
             // 
             this.timer7.Enabled = true;
             this.timer7.Interval = 10;
             this.timer7.Tick += new System.EventHandler(this.SuperAlienMove);
             // 
-            // timer8
+            // timer8 -- added by sarah
             // 
             this.timer8.Enabled = true;
             this.timer8.Interval = 10;
             this.timer8.Tick += new System.EventHandler(this.CheckCherry);
             // 
-            // timer9
+            // timer9 -- added by sarah
             // 
             this.timer9.Enabled = true;
             this.timer9.Interval = 3000;
             this.timer9.Tick += new System.EventHandler(this.FireCherry);
             // 
-            // helpmenu
+            // helpmenu -- added by sarah
             // 
             this.helpmenu.Controls.Add(this.controls);
             this.helpmenu.Controls.Add(this.closehelp);
@@ -250,7 +250,7 @@
             this.helpmenu.TabStop = false;
             this.helpmenu.Text = "help";
             // 
-            // controls
+            // controls -- added by sarah
             // 
             this.controls.AutoSize = true;
             this.controls.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -260,7 +260,7 @@
             this.controls.TabIndex = 0;
             this.controls.Text = resources.GetString("controls.Text");
             // 
-            // closehelp
+            // closehelp -- added by sarah
             // 
             this.closehelp.AutoSize = true;
             this.closehelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -272,7 +272,7 @@
             this.closehelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.closehelp.Click += new System.EventHandler(this.closehelp_Click);
             // 
-            // wname
+            // wname -- added by sarah
             // 
             this.wname.AutoSize = true;
             this.wname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,7 +284,7 @@
             this.wname.TabIndex = 0;
             this.wname.Text = "sarah newman \r\nw0466836";
             // 
-            // help
+            // help -- added by sarah
             // 
             this.help.AutoSize = true;
             this.help.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
