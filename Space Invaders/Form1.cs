@@ -418,7 +418,6 @@ namespace Space_Invaders
             helpmenu.Show();
         }
 
-
         //closes help menu
         private void closehelp_Click(object sender, EventArgs e)
         {
@@ -449,7 +448,6 @@ namespace Space_Invaders
 
             superAlien.Add(pb);
         }
-
 
         //creates super alien laser bomb and its attributes
         //was having issues with image -- https://stackoverflow.com/a/21787257
@@ -567,7 +565,7 @@ namespace Space_Invaders
                                 }
                             }
                         }
-                    }
+                    //}
                 }
             }
         }
