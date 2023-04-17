@@ -164,6 +164,7 @@
             this.quit.Size = new System.Drawing.Size(61, 31);
             this.quit.TabIndex = 3;
             this.quit.Text = "Quit";
+            this.quit.Click += new System.EventHandler(this.quit_Click);
             // 
             // startover
             // 
@@ -189,7 +190,6 @@
             this.endscore.Size = new System.Drawing.Size(88, 31);
             this.endscore.TabIndex = 2;
             this.endscore.Text = "score: ";
-            this.endscore.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // finish
             // 

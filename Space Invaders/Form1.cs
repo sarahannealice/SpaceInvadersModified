@@ -18,6 +18,7 @@ namespace Space_Invaders
             menu.Hide();
             new Enemies().CreateSprites(this);
             InsertAliens();
+            InsertSuperAliens();//added by sarah
         }    
         List<PictureBox> aliens = new List<PictureBox>();
         List<PictureBox> delay = new List<PictureBox>();
@@ -196,29 +197,13 @@ namespace Space_Invaders
             }
         }
 
-        //if all timers stop prints to screen if player loses
+        //if all timers stop prints to screen 'game over' menu
         private void gameOver()
         {
             timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop();
 
             menu.Visible = true;
             endscore.Text += pts.ToString();
-
-            /*
-            foreach (Control c in this.Controls)
-            {
-                if (c is Label && c.Name == "Finish")
-                {
-                    Label lbl = (Label)c;
-                    lbl.Text = "Game Over!";
-                    game = false;
-                }
-                else
-                {
-                    c.Visible = false;
-                }
-            }
-            */
         }
 
         //method to track player score
@@ -239,6 +224,12 @@ namespace Space_Invaders
                     aliens.Add(alien); 
                 }
             }
+        }
+
+        //method to add super alien (sarah's code)
+        private void InsertSuperAliens()
+        {
+
         }
 
         //checks if object touches screen boundaries (left-right)
@@ -375,12 +366,24 @@ namespace Space_Invaders
 
 
 
-        //----------menu event----------//
+        //--------------------menu event--------------------//
+        //this section is added code by sarah
         //resource for groupbox menu to restart-quit game
         //https://www.youtube.com/watch?v=V7tEaDgODZI&ab_channel=RohitProgrammingZone
+        
+        //restarts application onclick
         private void startover_Click(object sender, EventArgs e)
         {
+            //timer1.Start();
+            //menu.Hide();
+            //Player.Location = new Point(x, y);
+            Application.Restart();
+        }
 
+        //quits the application onclick
+        private void quit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
