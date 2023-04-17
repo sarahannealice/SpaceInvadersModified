@@ -98,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Properties\cherry.png" />
+    <None Include="Properties\fireball_v2.png" />
+    <None Include="Properties\fireball.png" />
     <Content Include="Resources\alien_green.png" />
     <Content Include="Resources\alien_laser.png" />
     <Content Include="Resources\alien_pink.png" />
@@ -105,6 +108,8 @@
     <Content Include="Resources\alien_white.png" />
     <Content Include="Resources\cherry.png" />
     <Content Include="Resources\fireball.png" />
+    <Content Include="Resources\fireball_animated.gif" />
+    <Content Include="Resources\fireball_v2.png" />
     <Content Include="Resources\player_laser.png" />
     <Content Include="Resources\player_ship_v1.png" />
     <Content Include="Resources\player_ship_v2.png" />

@@ -50,10 +50,16 @@
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.timer8 = new System.Windows.Forms.Timer(this.components);
             this.timer9 = new System.Windows.Forms.Timer(this.components);
+            this.helpmenu = new System.Windows.Forms.GroupBox();
+            this.controls = new System.Windows.Forms.Label();
+            this.closehelp = new System.Windows.Forms.Label();
+            this.wname = new System.Windows.Forms.Label();
+            this.help = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             this.menu.SuspendLayout();
+            this.helpmenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -228,8 +234,67 @@
             // timer9
             // 
             this.timer9.Enabled = true;
-            this.timer9.Interval = 3000;
+            this.timer9.Interval = 2000;
             this.timer9.Tick += new System.EventHandler(this.FireCherry);
+            // 
+            // helpmenu
+            // 
+            this.helpmenu.Controls.Add(this.controls);
+            this.helpmenu.Controls.Add(this.closehelp);
+            this.helpmenu.Controls.Add(this.wname);
+            this.helpmenu.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.helpmenu.Location = new System.Drawing.Point(174, 170);
+            this.helpmenu.Name = "helpmenu";
+            this.helpmenu.Size = new System.Drawing.Size(444, 332);
+            this.helpmenu.TabIndex = 8;
+            this.helpmenu.TabStop = false;
+            this.helpmenu.Text = "help";
+            // 
+            // controls
+            // 
+            this.controls.AutoSize = true;
+            this.controls.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.controls.Location = new System.Drawing.Point(19, 95);
+            this.controls.Name = "controls";
+            this.controls.Size = new System.Drawing.Size(400, 216);
+            this.controls.TabIndex = 0;
+            this.controls.Text = resources.GetString("controls.Text");
+            // 
+            // closehelp
+            // 
+            this.closehelp.AutoSize = true;
+            this.closehelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closehelp.Location = new System.Drawing.Point(420, 7);
+            this.closehelp.Name = "closehelp";
+            this.closehelp.Size = new System.Drawing.Size(23, 25);
+            this.closehelp.TabIndex = 0;
+            this.closehelp.Text = "x";
+            this.closehelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.closehelp.Click += new System.EventHandler(this.closehelp_Click);
+            // 
+            // wname
+            // 
+            this.wname.AutoSize = true;
+            this.wname.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wname.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.wname.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.wname.Location = new System.Drawing.Point(19, 26);
+            this.wname.Name = "wname";
+            this.wname.Size = new System.Drawing.Size(109, 36);
+            this.wname.TabIndex = 0;
+            this.wname.Text = "sarah newman \r\nw0466836";
+            // 
+            // help
+            // 
+            this.help.AutoSize = true;
+            this.help.Font = new System.Drawing.Font("Lucida Console", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help.ForeColor = System.Drawing.Color.White;
+            this.help.Location = new System.Drawing.Point(751, 9);
+            this.help.Name = "help";
+            this.help.Size = new System.Drawing.Size(21, 19);
+            this.help.TabIndex = 9;
+            this.help.Text = "?";
+            this.help.Click += new System.EventHandler(this.help_Click);
             // 
             // Form1
             // 
@@ -237,6 +302,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.help);
+            this.Controls.Add(this.helpmenu);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.Life2);
@@ -253,14 +320,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.helpmenu.ResumeLayout(false);
+            this.helpmenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void Timer6_Tick(object sender, System.EventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
 
         #endregion
@@ -286,6 +350,11 @@
         private System.Windows.Forms.Timer timer7;
         private System.Windows.Forms.Timer timer8;
         private System.Windows.Forms.Timer timer9;
+        private System.Windows.Forms.GroupBox helpmenu;
+        private System.Windows.Forms.Label controls;
+        private System.Windows.Forms.Label wname;
+        private System.Windows.Forms.Label closehelp;
+        private System.Windows.Forms.Label help;
     }
 }
 

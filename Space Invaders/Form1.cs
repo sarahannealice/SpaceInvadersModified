@@ -19,6 +19,10 @@ namespace Space_Invaders
             menu.Hide();
             new Enemies().CreateSprites(this);
             InsertAliens();
+
+            //initial timers are stopped until help menu is closed
+            timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop();
+            timer6.Stop(); timer7.Stop(); timer8.Stop(); timer9.Stop();
         }
         List<PictureBox> aliens = new List<PictureBox>();
         List<PictureBox> superAlien = new List<PictureBox>();
@@ -219,10 +223,11 @@ namespace Space_Invaders
         {
             timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop(); 
             //added by sarah
-            timer6.Stop(); timer7.Stop(); timer8.Stop(); 
+            timer6.Stop(); timer7.Stop(); timer8.Stop(); timer9.Stop();
 
             menu.Visible = true;
-            endscore.Text += pts.ToString();
+            string txt = "score: " + pts.ToString();
+            endscore.Text = (txt);
         }
 
         //method to track player score
@@ -402,6 +407,23 @@ namespace Space_Invaders
             Application.Exit();
         }
 
+        //open help menu
+        private void help_Click(object sender, EventArgs e)
+        {
+            timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop();
+            timer6.Stop(); timer7.Stop(); timer8.Stop(); timer9.Stop();
+            helpmenu.Show();
+        }
+
+
+        //closes help menu
+        private void closehelp_Click(object sender, EventArgs e)
+        {
+            timer1.Start(); timer2.Start(); timer3.Start(); timer4.Start(); timer5.Start(); Observer.Start();
+            timer6.Start(); timer7.Start(); timer8.Start(); timer9.Start();
+            helpmenu.Hide();
+        }
+
 
 
         //--------------------super alien code--------------------//
@@ -425,12 +447,14 @@ namespace Space_Invaders
             superAlien.Add(pb);
         }
 
+
         //creates super alien laser bomb and its attributes
+        //was having issues with image -- https://stackoverflow.com/a/21787257
         private void CherryBomb(PictureBox a)
         {
             PictureBox bomb = new PictureBox();
             bomb.Location = new Point(a.Location.X + a.Width / 3, a.Location.Y + 20);
-            bomb.Size = new Size(20, 20);
+            bomb.Size = new Size(20, 30);
             bomb.BackgroundImage = Properties.Resources.fireball;
             bomb.BackgroundImageLayout = ImageLayout.Stretch;
             bomb.Name = "CherryBomb";
