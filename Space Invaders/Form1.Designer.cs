@@ -49,6 +49,7 @@
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.timer9 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
@@ -89,6 +90,31 @@
             // 
             this.Observer.Interval = 1;
             this.Observer.Tick += new System.EventHandler(this.Observe);
+            //
+            //--------------------timers added by sarah--------------------// 
+            // timer6
+            // 
+            this.timer6.Enabled = true;
+            this.timer6.Interval = 5000;
+            this.timer6.Tick += new System.EventHandler(this.InsertSuperAliens);
+            // 
+            // timer7
+            // 
+            this.timer7.Enabled = true;
+            this.timer7.Interval = 10;
+            this.timer7.Tick += new System.EventHandler(this.SuperAlienMove);
+            // 
+            // timer8
+            // 
+            this.timer8.Enabled = true;
+            this.timer8.Interval = 10;
+            this.timer8.Tick += new System.EventHandler(this.CheckCherry);
+            // 
+            // timer9
+            // 
+            this.timer9.Enabled = true;
+            this.timer9.Interval = 3000;
+            this.timer9.Tick += new System.EventHandler(this.FireCherry);
             // 
             // labelLives
             // 
@@ -167,7 +193,7 @@
             this.quit.Size = new System.Drawing.Size(61, 31);
             this.quit.TabIndex = 3;
             this.quit.Text = "Quit";
-            this.quit.Click += new System.EventHandler(this.quit_Click);
+            this.quit.Click += new System.EventHandler(this.quit_Click_1);
             // 
             // startover
             // 
@@ -205,24 +231,6 @@
             this.finish.Size = new System.Drawing.Size(272, 59);
             this.finish.TabIndex = 0;
             this.finish.Text = "Game Over!";
-            // 
-            // timer6
-            // 
-            this.timer6.Enabled = true;
-            this.timer6.Interval = 5000;
-            this.timer6.Tick += new System.EventHandler(this.InsertSuperAliens);
-            // 
-            // timer7
-            // 
-            this.timer7.Enabled = true;
-            this.timer7.Interval = 10;
-            this.timer7.Tick += new System.EventHandler(this.SuperAlienMove);
-            // 
-            // timer8
-            // 
-            this.timer8.Enabled = true;
-            this.timer8.Interval = 7000;
-            this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
             // 
             // Form1
             // 
@@ -278,6 +286,7 @@
         private System.Windows.Forms.Timer timer6;
         private System.Windows.Forms.Timer timer7;
         private System.Windows.Forms.Timer timer8;
+        private System.Windows.Forms.Timer timer9;
     }
 }
 

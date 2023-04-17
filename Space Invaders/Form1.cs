@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,21 +19,22 @@ namespace Space_Invaders
             menu.Hide();
             new Enemies().CreateSprites(this);
             InsertAliens();
-        }    
+        }
         List<PictureBox> aliens = new List<PictureBox>();
         List<PictureBox> superAlien = new List<PictureBox>();
-        List<PictureBox> delay = new List<PictureBox>();        
+        List<PictureBox> delay = new List<PictureBox>();
 
         const int x = 360, y = 650;
         const int limit = 730;
 
         int speed = -1;
         int left = -1;
-        int top = 0;        
+        int top = 0;
         int cnt = 0;
         int pts = 0;
         //added by sarah
-        int move = 0;
+        int move = 0;//moves super alien
+        int cherryCount = 0;//counts how many times player hits cherry bomb (cap 3)
 
         bool game = true;
         bool moveLeft;
@@ -103,7 +105,7 @@ namespace Space_Invaders
 
                     if (bullet.Location.Y <= 0)
                     {
-                        this.Controls.Remove(bullet); 
+                        this.Controls.Remove(bullet);
                     }
 
                     //checks if player laser hits enemy laser and removes both if true
@@ -170,11 +172,11 @@ namespace Space_Invaders
         //checks number of aliens on screen
         private void CheckForWinner()
         {
-            int count = 0; 
+            int count = 0;
 
-            foreach(Control c in this.Controls)
+            foreach (Control c in this.Controls)
             {
-                if (c is PictureBox && c.Name == "Alien") count++; 
+                if (c is PictureBox && c.Name == "Alien") count++;
             }
 
             if (count == 0) YouWon();
@@ -209,12 +211,12 @@ namespace Space_Invaders
         //method to add alien to screen
         private void InsertAliens()
         {
-            foreach(Control c in this.Controls)
+            foreach (Control c in this.Controls)
             {
                 if (c is PictureBox && c.Name == "Alien")
                 {
                     PictureBox alien = (PictureBox)c;
-                    aliens.Add(alien); 
+                    aliens.Add(alien);
                 }
             }
         }
@@ -259,12 +261,12 @@ namespace Space_Invaders
 
         //keeps aliens in lines and moving
         private void AlienMove()
-        {            
-            foreach(PictureBox alien in aliens)
+        {
+            foreach (PictureBox alien in aliens)
             {
                 alien.Location = new Point(alien.Location.X + left, alien.Location.Y + top);
                 SetDirection(alien);
-                Collided(alien);                
+                Collided(alien);
             }
         }
 
@@ -300,7 +302,7 @@ namespace Space_Invaders
         private void StrikeSpan(object sender, EventArgs e)
         {
             Random r = new Random();
-            int pick; 
+            int pick;
 
             if (aliens.Count > 0)
             {
@@ -314,22 +316,22 @@ namespace Space_Invaders
         //if it collides with player/player laser, call respective methods
         private void DetectLaser(object sender, EventArgs e)
         {
-            foreach(Control c in this.Controls)
+            foreach (Control c in this.Controls)
             {
                 if (c is PictureBox && c.Name == "Laser")
                 {
                     PictureBox laser = (PictureBox)c;
-                    laser.Top += 5; 
+                    laser.Top += 5;
 
                     if (laser.Location.Y >= limit)
                     {
-                        this.Controls.Remove(laser); 
+                        this.Controls.Remove(laser);
                     }
                     if (laser.Bounds.IntersectsWith(Player.Bounds))
                     {
-                        this.Controls.Remove(laser); 
-                        LoseLife(); 
-                    }                    
+                        this.Controls.Remove(laser);
+                        LoseLife();
+                    }
                 }
             }
         }
@@ -339,7 +341,7 @@ namespace Space_Invaders
         {
             Player.Location = new Point(x, y);
 
-            foreach(Control c in this.Controls)
+            foreach (Control c in this.Controls)
             {
                 if (c is PictureBox && c.Name.Contains("Life") && c.Visible == true)
                 {
@@ -348,20 +350,38 @@ namespace Space_Invaders
                     return;
                 }
             }
-            gameOver(); 
+            gameOver();
+        }
+
+
+
+        //--------------------menu event--------------------//
+        //the following sections are added code by sarah
+        //resource for groupbox menu to restart-quit game
+        //https://www.youtube.com/watch?v=V7tEaDgODZI&ab_channel=RohitProgrammingZone
+
+        //restarts application onclick
+        private void startover_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        //quits the application onclick
+        private void quit_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
 
 
         //--------------------super alien code--------------------//
-        //the following sections are added code by sarah
         //create advance alien attributes
         private void SuperAlien()
         {
             //creating array to hold 2 start locations for super alien
             //to then randomize where it will start
             Random r = new Random();
-            int[] location = new int[] { -70, 800 };
+            int[] location = new int[] { -100, 830 };
             int x = location[r.Next(location.Length)];
 
             PictureBox pb = new PictureBox();
@@ -371,12 +391,30 @@ namespace Space_Invaders
             pb.BackgroundImageLayout = ImageLayout.Stretch;
             pb.Name = "SuperAlien";
             this.Controls.Add(pb);
+
+            superAlien.Add(pb);
+        }
+
+        //creates super alien laser bomb and its attributes
+        private void CherryBomb(PictureBox a)
+        {
+            PictureBox bomb = new PictureBox();
+            bomb.Location = new Point(a.Location.X + a.Width / 3, a.Location.Y + 20);
+            bomb.Size = new Size(5, 20);
+            bomb.BackgroundImage = Properties.Resources.cherry;
+            bomb.BackgroundImageLayout = ImageLayout.Stretch;
+            bomb.Name = "CherryBomb";
+            this.Controls.Add(bomb);
         }
 
         //method to add super alien (sarah's code)
         private void InsertSuperAliens(object sender, EventArgs e)
         {
-            SuperAlien();
+
+            if (superAlien.Count == 0)
+            {
+                SuperAlien();
+            }
         }
 
         //moves super alien
@@ -389,53 +427,88 @@ namespace Space_Invaders
                 {
                     PictureBox sa = (PictureBox)c;
 
-                    if (sa.Location.X == -70)
+                    if (sa.Location.X == -100)
                     {
-                        move = 5;
+                        move = 3;
                         sa.Location = new Point(sa.Location.X + move, sa.Location.Y);
-                    } if (sa.Location.X == 800)
+                    }
+                    if (sa.Location.X == 830)
                     {
-                        move = -5;
+                        move = -3;
                         sa.Location = new Point(sa.Location.X + move, sa.Location.Y);
-
-                    } else
+                    }
+                    else
                     {
                         sa.Location = new Point(sa.Location.X + move, sa.Location.Y);
                     }
-
-                    /*
-                    if (sa.Location.X >= 800)
-                    {
-                        this.Controls.Remove(sa);
-                    }
-                    */
-
                 }
             }
         }
 
-        private void timer8_Tick(object sender, EventArgs e)
+        private void FireCherry(object sender, EventArgs e)
         {
-
+            if (superAlien.Count > 0)
+            {
+                CherryBomb(superAlien[0]);
+                cherryCount = 0;//reset cherrybomb counter
+            }
         }
 
-
-
-        //--------------------menu event--------------------//
-        //resource for groupbox menu to restart-quit game
-        //https://www.youtube.com/watch?v=V7tEaDgODZI&ab_channel=RohitProgrammingZone
-
-        //restarts application onclick
-        private void startover_Click(object sender, EventArgs e)
+        //fires cherrybombs
+        private void CheckCherry(object sender, EventArgs e)
         {
-            Application.Restart();
-        }
 
+            //checks if cherrybomb leaves screen without hitting anything
+            foreach (Control c in this.Controls)
+            {
+                if (c is PictureBox && c.Name == "CherryBomb")
+                {
+                    PictureBox cherry = (PictureBox)c;
+                    cherry.Top += 7;
 
-        //quits the application onclick
-        private void quit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+                    //reached ground without being destroyed
+                    if (cherry.Location.Y >= 500)
+                    {
+                        this.Controls.Remove(cherry);
+                    }
+
+                    //checks-counts if cherrybomb hits player laser and removes both if true
+                    foreach (Control ct in this.Controls)
+                    {
+                        if (ct is PictureBox && ct.Name == "bullet")
+                        {
+                            PictureBox bullet = (PictureBox)ct;
+
+                            if (cherry.Bounds.IntersectsWith(bullet.Bounds) && cherryCount < 3)
+                            {
+                                cherryCount++;
+                            } else if (cherry.Bounds.IntersectsWith(bullet.Bounds) && cherryCount >= 3)
+                            {
+                                this.Controls.Remove(cherry);
+                                this.Controls.Remove(bullet);
+                                pts += 3;
+                                Score(pts);
+                            }
+                        }
+
+                        //checks if cherrybomb hits player
+                        //if so call 'loselife' function
+                        foreach (Control ctrl in this.Controls)
+                        {
+                            if (ctrl is PictureBox && ctrl.Name == "Player")
+                            {
+                                PictureBox player = (PictureBox)ctrl;
+
+                                if (cherry.Bounds.IntersectsWith(player.Bounds))
+                                {
+                                    this.Controls.Remove(cherry);
+                                    LoseLife();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
