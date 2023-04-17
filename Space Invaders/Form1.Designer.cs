@@ -38,14 +38,18 @@
             this.Observer = new System.Windows.Forms.Timer(this.components);
             this.labelLives = new System.Windows.Forms.Label();
             this.labelScore = new System.Windows.Forms.Label();
-            this.Finish = new System.Windows.Forms.Label();
             this.Life2 = new System.Windows.Forms.PictureBox();
             this.Life1 = new System.Windows.Forms.PictureBox();
             this.Player = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.menu = new System.Windows.Forms.GroupBox();
+            this.quit = new System.Windows.Forms.Label();
+            this.startover = new System.Windows.Forms.Label();
+            this.endscore = new System.Windows.Forms.Label();
+            this.finish = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -105,16 +109,6 @@
             this.labelScore.TabIndex = 6;
             this.labelScore.Text = "Score: 0";
             // 
-            // Finish
-            // 
-            this.Finish.AutoSize = true;
-            this.Finish.Font = new System.Drawing.Font("Sitka Small", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Finish.ForeColor = System.Drawing.Color.White;
-            this.Finish.Location = new System.Drawing.Point(286, 285);
-            this.Finish.Name = "Finish";
-            this.Finish.Size = new System.Drawing.Size(0, 52);
-            this.Finish.TabIndex = 7;
-            // 
             // Life2
             // 
             this.Life2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Life2.BackgroundImage")));
@@ -137,7 +131,7 @@
             // 
             // Player
             // 
-            this.Player.BackgroundImage = global::Space_Invaders.Properties.Resources.player_ship_v1;
+            this.Player.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Player.BackgroundImage")));
             this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Player.Location = new System.Drawing.Point(360, 650);
             this.Player.Name = "Player";
@@ -145,19 +139,69 @@
             this.Player.TabIndex = 0;
             this.Player.TabStop = false;
             // 
-            // button1
+            // menu
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Lucida Console", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(278, 355);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(243, 63);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Start Over";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.menu.Controls.Add(this.quit);
+            this.menu.Controls.Add(this.startover);
+            this.menu.Controls.Add(this.endscore);
+            this.menu.Controls.Add(this.finish);
+            this.menu.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.menu.Location = new System.Drawing.Point(231, 202);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(357, 272);
+            this.menu.TabIndex = 7;
+            this.menu.TabStop = false;
+            this.menu.Text = "menu";
+            // 
+            // quit
+            // 
+            this.quit.AutoSize = true;
+            this.quit.BackColor = System.Drawing.Color.Transparent;
+            this.quit.Font = new System.Drawing.Font("Sitka Small", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quit.ForeColor = System.Drawing.Color.White;
+            this.quit.Location = new System.Drawing.Point(144, 214);
+            this.quit.Name = "quit";
+            this.quit.Size = new System.Drawing.Size(61, 31);
+            this.quit.TabIndex = 3;
+            this.quit.Text = "Quit";
+            // 
+            // startover
+            // 
+            this.startover.AutoSize = true;
+            this.startover.BackColor = System.Drawing.Color.Transparent;
+            this.startover.Font = new System.Drawing.Font("Sitka Small", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startover.ForeColor = System.Drawing.Color.White;
+            this.startover.Location = new System.Drawing.Point(112, 183);
+            this.startover.Name = "startover";
+            this.startover.Size = new System.Drawing.Size(128, 31);
+            this.startover.TabIndex = 3;
+            this.startover.Text = "Start Over";
+            this.startover.Click += new System.EventHandler(this.startover_Click);
+            // 
+            // endscore
+            // 
+            this.endscore.AutoSize = true;
+            this.endscore.BackColor = System.Drawing.Color.Transparent;
+            this.endscore.Font = new System.Drawing.Font("Sitka Small", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endscore.ForeColor = System.Drawing.Color.White;
+            this.endscore.Location = new System.Drawing.Point(112, 85);
+            this.endscore.Name = "endscore";
+            this.endscore.Size = new System.Drawing.Size(88, 31);
+            this.endscore.TabIndex = 2;
+            this.endscore.Text = "score: ";
+            this.endscore.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // finish
+            // 
+            this.finish.AutoSize = true;
+            this.finish.BackColor = System.Drawing.Color.Transparent;
+            this.finish.Font = new System.Drawing.Font("Sitka Small", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finish.ForeColor = System.Drawing.Color.White;
+            this.finish.Location = new System.Drawing.Point(42, 26);
+            this.finish.Name = "finish";
+            this.finish.Size = new System.Drawing.Size(272, 59);
+            this.finish.TabIndex = 0;
+            this.finish.Text = "Game Over!";
             // 
             // Form1
             // 
@@ -165,8 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(784, 761);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Finish);
+            this.Controls.Add(this.menu);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.Life2);
             this.Controls.Add(this.Life1);
@@ -180,6 +223,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Life2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Life1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,9 +243,12 @@
         private System.Windows.Forms.PictureBox Life1;
         private System.Windows.Forms.PictureBox Life2;
         private System.Windows.Forms.Label labelScore;
-        private System.Windows.Forms.Label Finish;
         private System.Windows.Forms.Button Restart;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox menu;
+        private System.Windows.Forms.Label finish;
+        private System.Windows.Forms.Label endscore;
+        private System.Windows.Forms.Label quit;
+        private System.Windows.Forms.Label startover;
     }
 }
 

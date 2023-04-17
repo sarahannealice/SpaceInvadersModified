@@ -15,6 +15,7 @@ namespace Space_Invaders
         public Form1()
         {
             InitializeComponent();
+            menu.Hide();
             new Enemies().CreateSprites(this);
             InsertAliens();
         }    
@@ -200,6 +201,10 @@ namespace Space_Invaders
         {
             timer1.Stop(); timer2.Stop(); timer3.Stop(); timer4.Stop(); timer5.Stop(); Observer.Stop();
 
+            menu.Visible = true;
+            endscore.Text += pts.ToString();
+
+            /*
             foreach (Control c in this.Controls)
             {
                 if (c is Label && c.Name == "Finish")
@@ -213,6 +218,7 @@ namespace Space_Invaders
                     c.Visible = false;
                 }
             }
+            */
         }
 
         //method to track player score
@@ -350,11 +356,6 @@ namespace Space_Invaders
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //reduces number of lives when player is hit by alien-alien laser
         private void LoseLife()
         {
@@ -370,6 +371,16 @@ namespace Space_Invaders
                 }
             }
             gameOver(); 
+        }
+
+
+
+        //----------menu event----------//
+        //resource for groupbox menu to restart-quit game
+        //https://www.youtube.com/watch?v=V7tEaDgODZI&ab_channel=RohitProgrammingZone
+        private void startover_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
